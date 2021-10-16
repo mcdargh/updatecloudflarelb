@@ -24,8 +24,8 @@ func main() {
 		Pass: os.Getenv("UNIFI_PWD"),
 		URL:  os.Getenv("UNIFI_URL"),
 		// Log with log.Printf or make your own interface that accepts (msg, fmt)
-		ErrorLog: log.Printf,
-		DebugLog: log.Printf,
+		// ErrorLog: log.Printf,
+		// DebugLog: log.Printf,
 	}
 	uni, err := unifi.NewUnifi(&c)
 	if err != nil {
@@ -101,27 +101,4 @@ func getUnifiWANIPs(uni *unifi.Unifi) (ips [2]string) {
 		fmt.Printf("WAN2: %s\n", usg.Wan2.IP)
 	}
 	return
-
-	// clients, err := uni.GetClients(sites)
-	// if err != nil {
-	// 	log.Fatalln("Error:", err)
-	// }
-	// devices, err := uni.GetDevices(sites)
-	// if err != nil {
-	// 	log.Fatalln("Error:", err)
-	// }
-
-	// log.Println(len(sites), "Unifi Sites Found: ", sites)
-	// log.Println(len(clients), "Clients connected:")
-	// for i, client := range clients {
-	// 	log.Println(i+1, client.ID, client.Hostname, client.IP, client.Name, client.LastSeen)
-	// }
-
-	// log.Println(len(devices.USWs), "Unifi Switches Found")
-	// log.Println(len(devices.USGs), "Unifi Gateways Found")
-
-	// log.Println(len(devices.UAPs), "Unifi Wireless APs Found:")
-	// for i, uap := range devices.UAPs {
-	// 	log.Println(i+1, uap.Name, uap.IP)
-	// }
 }
